@@ -4,6 +4,13 @@ This repository contains half automated scripts for packaging and deploying appl
 
 ---
 
+## Credits
+
+This project is based on the excellent work from the [MSEndpointMgr/IntuneWin32App](https://github.com/MSEndpointMgr/IntuneWin32App) repository.
+
+- Original script by: [MSEndpointMgr](https://github.com/MSEndpointMgr)
+- License: [LICENSE](https://github.com/MSEndpointMgr/IntuneWin32App/blob/master/LICENSE)
+
 ## Features
 
 - 🛠 **Automated Packaging:** Automate packaging of `.exe` or `.msi` installers for deployment via Intune.
