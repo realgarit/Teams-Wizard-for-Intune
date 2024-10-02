@@ -1,4 +1,4 @@
-﻿
+
 [CmdletBinding()]
 param (
     [Parameter()]
@@ -393,4 +393,4 @@ if ($PackageType -eq "EXE") {
                                     --destination-path $PackageName `
                                     --source $SourcePath
     }
-}    
+}
