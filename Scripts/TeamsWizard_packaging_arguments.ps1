@@ -1,6 +1,6 @@
 ﻿$PackageType = "EXE"
 $PackageName = "Teams Wizard v0.6.7"
-$DownloadURL = "https://github.com/patriklleshaj/Teams-Wizard-for-Intune/blob/faf22f65459064207042e2dbe9ea42940608370c/TeamsWizard_x64.msi"
+$DownloadURL = "https://github.com/patriklleshaj/Teams-Wizard-for-Intune/blob/7b4313bf017d11ac8d668973a58b44630b436544/Apps/TeamsWizard_x64.msi"
 $TenantName = "TENANT NAME"
 $Assignment = "g_devices_testing"
 $InstallArgs = 'msiexec /i ALLUSERS=1 REBOOT=ReallySuppress /l*v "%Temp%\TeamsWizard_Install.log"'
