@@ -17,7 +17,6 @@ Set-ItemProperty -Path $RegPath -Name "ContactLookupPatterns" -Value $ContactLoo
 
 # String values (REG_SZ)
 Set-ItemProperty -Path $RegPath -Name "CultureInfo" -Value "de-DE"
-Set-ItemProperty -Path $RegPath -Name "APIKey" -Value ""
 
 # DWORD values (REG_DWORD)
 Set-ItemProperty -Path $RegPath -Name "ContactLookupCopyToClipboard" -Value 1
