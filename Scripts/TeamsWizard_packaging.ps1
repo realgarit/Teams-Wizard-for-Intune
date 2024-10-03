@@ -138,6 +138,9 @@ if ($PackageType -eq "MSI") {
 
     Invoke-WebRequest -Uri $DownloadURL -OutFile C:\Packaging\$PackageName\Input\$PackageInstaller
 
+    ## Create Installation Powershell File
+    Set-Content C:\Packaging\$PackageName\Input\$PackageName'-Install'.ps1 "Start-Process msiexec.exe -Argumentlist '$($InstallArgs)' -Wait"
+
     # Package MSI as .intunewin file
     $SourceFolder = "C:\Packaging\$($PackageName)\Input"
     $SetupFile = $PackageInstaller
@@ -160,8 +163,6 @@ if ($PackageType -eq "MSI") {
 
     $IntuneWinFile = Get-ChildItem -Path  "C:\Packaging\$($PackageName)\Output"
     $IntuneWinMetaData = Get-IntuneWin32AppMetaData -FilePath $IntuneWinFile.FullName
-    $InstallCommandLine = $InstallArgs
-    $UninstallCommandLine = $UninstallArgs
 
     # Create custom display name like 'Name' and 'Version'
     $Displayname = $PackageName
@@ -172,6 +173,9 @@ if ($PackageType -eq "MSI") {
     $DetectionRule = New-IntuneWin32AppDetectionRuleMSI -ProductCode $IntuneWinMetaData.ApplicationInfo.MsiInfo.MsiProductCode -ProductVersionOperator "greaterThanOrEqual" -ProductVersion $IntuneWinMetaData.ApplicationInfo.MsiInfo.MsiProductVersion
 
     # Add new MSI Win32 app
+    $InstallationScriptFile = Get-ChildItem -Path "C:\Packaging\$($PackageName)\Input" | Where-Object Name -Like "*-Install.ps1"
+    $InstallCommandLine = "powershell.exe -ExecutionPolicy Bypass -File .\$($InstallationScriptFile.Name)"
+    $UninstallCommandLine = $UninstallArgs
     Add-IntuneWin32App -FilePath $IntuneWinFile.Fullname -DisplayName $DisplayName -Description $PackageName -AppVersion $AppVersion -Publisher $Publisher -InstallCommandLine $InstallCommandLine -UninstallCommandLine $UninstallCommandLine -InstallExperience "system" -RestartBehavior "suppress" -DetectionRule $DetectionRule -Verbose
 
     ## Assigment
