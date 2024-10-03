@@ -182,8 +182,8 @@ if ($PackageType -eq "MSI") {
     If ($Assignment -eq "All Users"){
 
         #### Assignment
-        Write-Host "Sleeping for 20 seconds until the Win32 app gets registered in the background until the Win32 app gets registered in the background"
-        Start-Sleep -Seconds 20
+        Write-Host "Sleeping for 30 seconds until the Win32 app gets registered in the background until the Win32 app gets registered in the background"
+        Start-Sleep -Seconds 30
         $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
         # Add assignment for all users
@@ -194,7 +194,7 @@ if ($PackageType -eq "MSI") {
 
         #### Assignment
         Write-Host "Sleeping for 20 seconds until the Win32 app gets registered in the background"
-        Start-Sleep -Seconds 20
+        Start-Sleep -Seconds 30
         $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
         # Add assignment for all devices
@@ -239,7 +239,7 @@ if ($PackageType -eq "MSI") {
         
         # Get a specific Win32 app by it's display name
         Write-Host "Sleeping for 20 seconds until the Win32 app gets registered in the background"
-        Start-Sleep -Seconds 20
+        Start-Sleep -Seconds 30
         $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
         #Add an include assignment for a specific Azure AD group
@@ -334,7 +334,7 @@ if ($PackageType -eq "EXE") {
 
         #### Assignment
         Write-Host "Sleeping for 20 seconds until the Win32 app gets registered in the background"
-        Start-Sleep -Seconds 20
+        Start-Sleep -Seconds 30
         $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
         # Add assignment for all users
@@ -345,7 +345,7 @@ if ($PackageType -eq "EXE") {
 
         #### Assignment
         Write-Host "Sleeping for 20 seconds until the Win32 app gets registered in the background"
-        Start-Sleep -Seconds 20
+        Start-Sleep -Seconds 30
         $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
         # Add assignment for all devices
@@ -389,7 +389,7 @@ if ($PackageType -eq "EXE") {
         
         # Get a specific Win32 app by it's display name
         Write-Host "Sleeping for 20 seconds until the Win32 app gets registered in the background"
-        Start-Sleep -Seconds 20
+        Start-Sleep -Seconds 30
         $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
         #Add an include assignment for a specific Azure AD group
