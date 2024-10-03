@@ -1,6 +1,6 @@
 $ClientID = "61c9ddea-d334-418a-bde3-b064e4f7dac6"
 $RedirectURI = "msal61c9ddea-d334-418a-bde3-b064e4f7dac6://auth"
-$PackageType = "MSI"
+$PackageType = "EXE"
 $PackageName = "Teams Wizard"
 $AppVersion = "0.6.7"
 $DownloadURL = "https://github.com/realgarit/Teams-Wizard-for-Intune/raw/refs/heads/main/Apps/TeamsWizard_x64.msi"
