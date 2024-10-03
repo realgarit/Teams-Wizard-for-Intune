@@ -119,7 +119,4 @@ Once you have the **Client ID** and **Redirect URI**, add them as parameters to 
 ## Registry Configuration Example
 
 The following registry settings will be applied automatically after uploading the configuration script:
-
-![image](https://github.com/user-attachments/assets/8c9a66ce-21b6-48fa-8073-5dce5ecfc201)
-
-
+![image](https://github.com/user-attachments/assets/54c2119a-3eb8-403f-9ed4-d0433d4d5c5c)
