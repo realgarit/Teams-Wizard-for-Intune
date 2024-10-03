@@ -175,7 +175,9 @@ if ($PackageType -eq "MSI") {
     If ($Assignment -eq "All Users"){
 
         #### Assignment
-        $Win32App = Get-IntuneWin32App -DisplayName "$PackageName" -Verbose
+        Write-Host "Sleeping for 20 seconds"
+        Start-Sleep -Seconds 20
+        $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
         # Add assignment for all users
         Add-IntuneWin32AppAssignmentAllUsers -ID $Win32App.id -Intent "available" -Notification "showAll" -Verbose
@@ -184,7 +186,9 @@ if ($PackageType -eq "MSI") {
     If ($Assignment -eq "All Devices"){
 
         #### Assignment
-        $Win32App = Get-IntuneWin32App -DisplayName "$PackageName" -Verbose
+        Write-Host "Sleeping for 20 seconds"
+        Start-Sleep -Seconds 20
+        $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
         # Add assignment for all devices
         Add-IntuneWin32AppAssignmentAllDevices -ID $Win32App.id -Intent "available" -Notification "showAll" -Verbose
@@ -322,7 +326,9 @@ if ($PackageType -eq "EXE") {
     If ($Assignment -eq "All Users"){
 
         #### Assignment
-        $Win32App = Get-IntuneWin32App -DisplayName "$PackageName" -Verbose
+        Write-Host "Sleeping for 20 seconds"
+        Start-Sleep -Seconds 20
+        $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
         # Add assignment for all users
         Add-IntuneWin32AppAssignmentAllUsers -ID $Win32App.id -Intent "available" -Notification "showAll" -Verbose
@@ -331,7 +337,9 @@ if ($PackageType -eq "EXE") {
     If ($Assignment -eq "All Devices"){
 
         #### Assignment
-        $Win32App = Get-IntuneWin32App -DisplayName "$PackageName" -Verbose
+        Write-Host "Sleeping for 20 seconds"
+        Start-Sleep -Seconds 20
+        $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
         # Add assignment for all devices
         Add-IntuneWin32AppAssignmentAllDevices -ID $Win32App.id -Intent "available" -Notification "showAll" -Verbose
@@ -373,7 +381,9 @@ if ($PackageType -eq "EXE") {
         $GroupID = Get-AzureADGroup -SearchString $Assignment
         
         # Get a specific Win32 app by it's display name
-        $Win32App = Get-IntuneWin32App -DisplayName "$PackageName" -Verbose
+        Write-Host "Sleeping for 20 seconds"
+        Start-Sleep -Seconds 20
+        $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
         #Add an include assignment for a specific Azure AD group
         Add-IntuneWin32AppAssignmentGroup -Include -ID $Win32App.id -GroupID $GroupID.ObjectID -Intent "required" -Notification "showAll" -Verbose
