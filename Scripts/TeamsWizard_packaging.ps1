@@ -178,7 +178,7 @@ if ($PackageType -eq "MSI") {
     If ($Assignment -eq "All Users"){
 
         #### Assignment
-        Write-Host "Sleeping for 20 seconds"
+        Write-Host "Sleeping for 20 seconds until the Win32 app gets registered in the background until the Win32 app gets registered in the background"
         Start-Sleep -Seconds 20
         $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
@@ -189,7 +189,7 @@ if ($PackageType -eq "MSI") {
     If ($Assignment -eq "All Devices"){
 
         #### Assignment
-        Write-Host "Sleeping for 20 seconds"
+        Write-Host "Sleeping for 20 seconds until the Win32 app gets registered in the background"
         Start-Sleep -Seconds 20
         $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
@@ -234,7 +234,7 @@ if ($PackageType -eq "MSI") {
         $GroupID = Get-AzureADGroup -SearchString $Assignment
         
         # Get a specific Win32 app by it's display name
-        Write-Host "Sleeping for 20 seconds"
+        Write-Host "Sleeping for 20 seconds until the Win32 app gets registered in the background"
         Start-Sleep -Seconds 20
         $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
@@ -329,7 +329,7 @@ if ($PackageType -eq "EXE") {
     If ($Assignment -eq "All Users"){
 
         #### Assignment
-        Write-Host "Sleeping for 20 seconds"
+        Write-Host "Sleeping for 20 seconds until the Win32 app gets registered in the background"
         Start-Sleep -Seconds 20
         $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
@@ -340,7 +340,7 @@ if ($PackageType -eq "EXE") {
     If ($Assignment -eq "All Devices"){
 
         #### Assignment
-        Write-Host "Sleeping for 20 seconds"
+        Write-Host "Sleeping for 20 seconds until the Win32 app gets registered in the background"
         Start-Sleep -Seconds 20
         $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
@@ -384,7 +384,7 @@ if ($PackageType -eq "EXE") {
         $GroupID = Get-AzureADGroup -SearchString $Assignment
         
         # Get a specific Win32 app by it's display name
-        Write-Host "Sleeping for 20 seconds"
+        Write-Host "Sleeping for 20 seconds until the Win32 app gets registered in the background"
         Start-Sleep -Seconds 20
         $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
 
