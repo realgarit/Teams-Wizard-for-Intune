@@ -172,7 +172,7 @@ if ($PackageType -eq "MSI") {
     $DetectionRule = New-IntuneWin32AppDetectionRuleMSI -ProductCode $IntuneWinMetaData.ApplicationInfo.MsiInfo.MsiProductCode -ProductVersionOperator "greaterThanOrEqual" -ProductVersion $IntuneWinMetaData.ApplicationInfo.MsiInfo.MsiProductVersion
 
     # Add new MSI Win32 app
-    Add-IntuneWin32App -FilePath $IntuneWinFile.Fullname -DisplayName $DisplayName -Description $PackageName -Publisher $Publisher -InstallCommandLine $InstallCommandLine -UninstallCommandLine $UninstallCommandLine -InstallExperience "system" -RestartBehavior "suppress" -DetectionRule $DetectionRule -Verbose
+    Add-IntuneWin32App -FilePath $IntuneWinFile.Fullname -DisplayName $DisplayName -Description $PackageName -AppVersion $AppVersion -Publisher $Publisher -InstallCommandLine $InstallCommandLine -UninstallCommandLine $UninstallCommandLine -InstallExperience "system" -RestartBehavior "suppress" -DetectionRule $DetectionRule -Verbose
 
     ## Assigment
     If ($Assignment -eq "All Users"){
@@ -323,7 +323,7 @@ if ($PackageType -eq "EXE") {
     $InstallationScriptFile = Get-ChildItem -Path "C:\Packaging\$($PackageName)\Input" | Where-Object Name -Like "*-Install.ps1"
     $InstallCommandLine = "powershell.exe -ExecutionPolicy Bypass -File .\$($InstallationScriptFile.Name)"
     $UninstallCommandLine = $UninstallArgs
-    Add-IntuneWin32App -FilePath $IntuneWinFile.FullName -DisplayName $DisplayName -Description $PackageName -Publisher "iTrust" -InstallExperience "system" -RestartBehavior "suppress" -DetectionRule $DetectionRule -InstallCommandLine $InstallCommandLine -UninstallCommandLine $UninstallCommandLine -Verbose
+    Add-IntuneWin32App -FilePath $IntuneWinFile.FullName -DisplayName $DisplayName -Description $PackageName -AppVersion $AppVersion -Publisher $Publisher -InstallExperience "system" -RestartBehavior "suppress" -DetectionRule $DetectionRule -InstallCommandLine $InstallCommandLine -UninstallCommandLine $UninstallCommandLine -Verbose
     
     ## Assigment
     If ($Assignment -eq "All Users"){
