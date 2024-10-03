@@ -131,7 +131,7 @@ if ($PackageType -eq "MSI") {
     
 
     ### Download PackageFile
-    $PackageInstaller = "$PackageName.msi"
+    $PackageInstaller = [System.IO.Path]::GetFileName($DownloadURL)
 
     Invoke-WebRequest -Uri $DownloadURL -OutFile C:\Packaging\$PackageName\Input\$PackageInstaller
 
@@ -265,7 +265,7 @@ if ($PackageType -eq "MSI") {
 if ($PackageType -eq "EXE") {
     
     ### Download PackageFile
-    $PackageInstaller = "$PackageName.exe"
+    $PackageInstaller = [System.IO.Path]::GetFileName($DownloadURL)
 
     Invoke-WebRequest -Uri $DownloadURL -OutFile C:\Packaging\$PackageName\Input\$PackageInstaller
 
