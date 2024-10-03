@@ -87,7 +87,7 @@ To successfully authenticate and use this script for Intune automation, you will
    - Add **MSAL Redirect URI**,
    - Click **Configure**.
    - It should look this:
-   - ![image](https://github.com/user-attachments/assets/25c796f7-2f35-4d77-83fa-3d024d0cc6bc)
+   - ![image](https://github.com/user-attachments/assets/1ee02f29-1d16-4f65-b9a9-b7ab6c2034fc)
 
 4. **Copy the Redirect URI**:
    - The redirect URI is essential for the PowerShell script to authenticate. Copy this for use in your script.
@@ -120,5 +120,6 @@ Once you have the **Client ID** and **Redirect URI**, add them as parameters to 
 
 The following registry settings will be applied automatically after uploading the configuration script:
 
-![image](https://github.com/user-attachments/assets/4ffa4241-1d2a-4540-9c6f-431a46c38426)
+![image](https://github.com/user-attachments/assets/8c9a66ce-21b6-48fa-8073-5dce5ecfc201)
+
 
