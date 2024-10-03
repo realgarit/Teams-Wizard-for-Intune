@@ -2,7 +2,7 @@ $ClientID = "61c9ddea-d334-418a-bde3-b064e4f7dac6"
 $RedirectURI = "msal61c9ddea-d334-418a-bde3-b064e4f7dac6://auth"
 $PackageType = "EXE"
 $PackageName = "Teams Wizard v0.6.7"
-$DownloadURL = "https://github.com/patriklleshaj/Teams-Wizard-for-Intune/raw/refs/heads/main/Apps/TeamsWizard_x64.msi"
+$DownloadURL = "https://github.com/realgarit/Teams-Wizard-for-Intune/raw/refs/heads/main/Apps/TeamsWizard_x64.msi"
 $TenantName = "alzch.onmicrosoft.com"
 $Assignment = "g_devices_testing"
 $InstallArgs = 'msiexec /i ALLUSERS=1 REBOOT=ReallySuppress /l*v "%Temp%\TeamsWizard_Install.log"'
