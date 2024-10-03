@@ -1,6 +1,6 @@
 # Teams Wizard Intune Packaging
 
-This repository contains half automated scripts for packaging and deploying applications using **Microsoft Intune**. The solution includes a streamlined PowerShell script to package Win32 apps, manage installation arguments, and configure registry settings.
+This repository contains a full automated script for packaging and deploying applications using **Microsoft Intune**. The solution includes a streamlined PowerShell script to package Win32 apps, manage installation arguments, and configure registry settings.
 
 ---
 
@@ -39,6 +39,67 @@ The following registry configuration allows the application to recognize and for
 "ContactLookupPatterns"="1:\"^\\+41(?!7[5-9])(\\d+)$\":3:\"0$1\""
 ```
 
+## Authentication
+
+### Why is This Needed?
+
+Based on research in May 2024, Microsoft updated authentication methods for the **Graph SDK-based PowerShell module**. As a result, the global **Microsoft Intune PowerShell application (client) ID** based authentication method has been **removed**. You can read more about this change [here](https://learn.microsoft.com/en-us/samples/microsoftgraph/powershell-intune-samples/important/).
+
+For example, the command `Connect-MSGraph` previously used the global **Intune PowerShell application ID** (`d1ddf0e4-d672-4dae-b554-9d5bdfd93547`), but this method is now deprecated. To continue using the Intune APIs with PowerShell, you need to **create your own app registration** with the required permissions and connect via that new registration app.
+
+### How to Set Up Authentication
+
+To successfully authenticate and use this script for Intune automation, you will need to set up an **App Registration** in Azure Active Directory (EntraID) and configure the necessary API permissions. Follow these steps:
+
+### Step 1: Create an App Registration
+1. **Go to Azure Active Directory**:
+   - In the Azure portal, navigate to **Azure Active Directory (EntraID)**.
+   
+2. **Create a New App Registration**:
+   - Click on **App registrations** from the sidebar.
+   - Click **New registration**.
+   - Name your app **"Intune Powershell"**.
+   - Choose the **Supported account types** that match your environment (usually "Accounts in this organizational directory only").
+   - Click **Register**.
+
+### Step 2: Configure API Permissions
+1. **Add API Permissions**:
+   - After creating the app, go to the **API permissions** section.
+   - Click **Add a permission**.
+   - Select **Microsoft Graph**.
+   - Choose **Delegated permissions**.
+   - Search for and select **DeviceManagementApps.ReadWrite.All**.
+   - Click **Add permissions**.
+   
+2. **Grant Admin Consent**:
+   - Once the permission is added, click **Grant admin consent** for your tenant to allow the app to use these permissions on behalf of users.
+
+### Step 3: Configure Authentication
+1. **Go to Authentication Settings**:
+   - In the **App registration** page, navigate to the **Authentication** section from the sidebar.
+
+2. **Add a Platform**:
+   - Click **Add a platform**.
+   - Select **Mobile and desktop applications**.
+
+3. **Add the MSAL Redirect URI**:
+   - Scroll down to the **Redirect URIs** section.
+   - Add **MSAL Redirect URI**,
+   - Click **Configure**.
+   - It should look this:
+   - ![image](https://github.com/user-attachments/assets/25c796f7-2f35-4d77-83fa-3d024d0cc6bc)
+
+4. **Copy the Redirect URI**:
+   - The redirect URI is essential for the PowerShell script to authenticate. Copy this for use in your script.
+
+### Step 4: Retrieve the Client ID
+1. **Get the Client ID**:
+   - Go to the **Overview** tab of the App Registration.
+   - Copy the **Client ID** (also known as the Application ID). This will be used as a parameter in your script.
+
+### Step 5: Add Authentication Parameters to Your Script
+Once you have the **Client ID** and **Redirect URI**, add them as parameters to your PowerShell script to enable authentication.
+
 ## Usage
 
 1. **Clone the Repository**:
@@ -47,38 +108,17 @@ The following registry configuration allows the application to recognize and for
     cd TeamsWizard-IntunePackaging
     ```
 
-2. **Run the packaging script**:
-    ```powershell
-    ﻿$PackageType = "EXE"
-    $PackageName = "Teams Wizard v0.6.7"
-    $DownloadURL = "https://github.com/patriklleshaj/Teams-Wizard-for-Intune/blob/7b4313bf017d11ac8d668973a58b44630b436544/Apps/TeamsWizard_x64.msi"
-    $TenantName = "example.omicrosoft.com"
-    $Assignment = "g_devices_testing"
-    $InstallArgs = 'msiexec /i ALLUSERS=1 REBOOT=ReallySuppress /l*v "%Temp%\TeamsWizard_Install.log"'
-    $UninstallArgs  = "msiexec /x /qn {8E72BB19-BE2D-4A5A-AA39-839513CF1E11}"
-    $DetectionArgs = @"
-    Get-WmiObject -Class Win32_Product | Where {`$_.Vendor -eq 'LyncWizard.com' -and `$_.Version -eq '0.6.7'}
-    "@
-    
-    .\TeamsWizard_packaging.ps1 -PackageType $PackageType `
-                                            -PackageName $PackageName `
-                                            -DownloadURL $DownloadURL `
-                                            -TenantName $TenantName `
-                                            -Assignment $Assignment `
-                                            -InstallArgs $InstallArgs `
-                                            -UninstallArgs $UninstallArgs `
-                                            -DetectionArgs $DetectionArgs
-    ```
-3. **Don't forget to add your API Key in the value field for tel.search.ch for contact lookups**
+2. **Update the parameters**
+   
+4. **Don't forget to add your API Key in the value field for tel.search.ch for contact lookups**
 
-4. **Upload the configuration script to Intune**
-
+5. **Upload the configuration script to Intune and assignt it to your liking**
 
 ---
 
 ## Registry Configuration Example
 
-The following registry settings will be applied automatically after app deployment:
+The following registry settings will be applied automatically after uploading the configuration script:
 
 ![image](https://github.com/user-attachments/assets/4ffa4241-1d2a-4540-9c6f-431a46c38426)
 
