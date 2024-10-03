@@ -1,9 +1,11 @@
-
 [CmdletBinding()]
 param (
     [Parameter()]
     [String]
     $PackageType,
+    [Parameter()]
+    [String]
+    $RedirectURI,
     [Parameter()]
     [String]
     $PackageName,
@@ -142,7 +144,7 @@ if ($PackageType -eq "MSI") {
     ### Connect to MS Graph - Default is authentication prompt set parameter $AuthTypeSPN to True to use Service Principal
     if ($AuthTypeSPN -eq $False) {
         
-        Connect-MSIntuneGraph -TenantID $TenantName
+        Connect-MSIntuneGraph -TenantID $TenantName -ClientID $ClientID -RedirectURI $RedirectURI
 
     }
     if ($AuthTypeSPN -eq $True) {
@@ -222,7 +224,8 @@ if ($PackageType -eq "MSI") {
         }
         $GroupID = Get-AzureADGroup -SearchString $Assignment
         # Get a specific Win32 app by it's display name
-        $Win32App = Get-IntuneWin32App -DisplayName $PackageName -Verbose
+
+        $Win32App = Get-IntuneWin32App -DisplayName "$PackageName" -Verbose
 
         #Add an include assignment for a specific Azure AD group
         Add-IntuneWin32AppAssignmentGroup -Include -ID $Win32App.id -GroupID $GroupID.ObjectID -Intent "required" -Notification "showAll" -Verbose
@@ -285,7 +288,7 @@ if ($PackageType -eq "EXE") {
 
     if ($AuthTypeSPN -eq $False) {
         
-        Connect-MSIntuneGraph -TenantID $TenantName
+        Connect-MSIntuneGraph -TenantID $TenantName -ClientID 61c9ddea-d334-418a-bde3-b064e4f7dac6 -RedirectURI msal61c9ddea-d334-418a-bde3-b064e4f7dac6://auth
 
     }
     if ($AuthTypeSPN -eq $True) {
@@ -393,4 +396,4 @@ if ($PackageType -eq "EXE") {
                                     --destination-path $PackageName `
                                     --source $SourcePath
     }
-}
+}    
