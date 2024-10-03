@@ -11,6 +11,9 @@ param (
     $PackageName,
     [Parameter()]
     [String]
+    $AppVersion,
+    [Parameter()]
+    [String]
     $DownloadURL,
     [Parameter()]
     [String]
