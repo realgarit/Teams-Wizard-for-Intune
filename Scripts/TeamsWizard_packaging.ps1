@@ -227,7 +227,8 @@ if ($PackageType -eq "MSI") {
         $GroupID = Get-AzureADGroup -SearchString $Assignment
         
         # Get a specific Win32 app by it's display name
-
+        Write-Host "Sleeping for 10 seconds"
+        Start-Sleep -Seconds 10
         $Win32App = Get-IntuneWin32App -DisplayName "$PackageName" -Verbose
 
         #Add an include assignment for a specific Azure AD group
