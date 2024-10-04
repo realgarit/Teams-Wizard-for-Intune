@@ -19,6 +19,7 @@ This repository contains a full automated script for packaging and deploying app
     - [Step 5: Add Authentication Parameters to Your Script](#step-5-add-authentication-parameters-to-your-script)
 - [Usage](#usage)
 - [Registry Configuration Example](#registry-configuration-example)
+- [End User Guide](#end-user-guide)
 
 ---
 
@@ -147,5 +148,36 @@ Once you have the **Client ID** and **Redirect URI**, add them as parameters to 
 
 The following registry settings will be applied automatically after uploading the configuration script:
 ![image](https://github.com/user-attachments/assets/54c2119a-3eb8-403f-9ed4-d0433d4d5c5c)
+
+---
+
+## End User Guide
+
+### Important Note:
+TeamsWizard does not start automatically after installation because it must run in the same user context as **Microsoft Teams**. Therefore, you will need to manually start TeamsWizard the first time. Afterward, it will automatically start with Windows on subsequent reboots.
+
+### Step-by-Step Instructions:
+
+1. **Starting TeamsWizard for the First Time**:
+   - After installation, manually start the **TeamsWizard** application.
+   - ![Bild1](https://github.com/user-attachments/assets/b1dfaffa-c799-4039-b1b4-8e34255df770)
+   - Once started, the app will run in the background, and you will see the TeamsWizard icon in your system tray.
+   - ![Bild2](https://github.com/user-attachments/assets/54cc3a58-0e7a-48e2-a8d7-12f4ebe5c7f9)
+
+2. **Checking Configuration**:
+   - Right-click the TeamsWizard icon in the system tray and select **Settings**.
+   - Verify that the **API Key** is correctly entered in the appropriate field.
+   - ![Bild3](https://github.com/user-attachments/assets/6758afa2-d6d4-4f42-a2b1-164d4206498d)
+   - If the API key is filled in, the configuration has been successfully applied, and the app is ready for use.
+
+3. **Waiting for Configuration**:
+   - If the settings do not appear or the API key is missing, it means that Intune is still applying the configuration. Give it some time, and check back later.
+
+4. **Handling Incoming Calls**:
+   - When someone calls you, a pop-up will appear in the corner of your screen, displaying the caller's details.
+   - ![Bild4](https://github.com/user-attachments/assets/f1a941e7-7dfe-4c44-a1e6-4dc8bb18b21e)
+   - If the pop-up does not appear, it indicates that **tel.search.ch** could not find any information about the caller.
+
+By following these steps, TeamsWizard will be properly configured and ready to enhance your Microsoft Teams experience.
 
 ---
