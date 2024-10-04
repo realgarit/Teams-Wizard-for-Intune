@@ -108,8 +108,8 @@ Once you have the **Client ID** and **Redirect URI**, add them as parameters to 
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/patriklleshaj/Teams-Wizard-for-Intune.git
-    cd TeamsWizard-IntunePackaging
+    git clone https://github.com/realgarit/Teams-Wizard-for-Intune.git
+    cd Teams-Wizard-for-Intune-main
     ```
 
 2. **Update the parameters**
