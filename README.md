@@ -4,6 +4,24 @@ This repository contains a full automated script for packaging and deploying app
 
 ---
 
+## Table of Contents
+- [Credits](#credits)
+- [Features](#features)
+- [Contact Lookup Patterns Configuration](#contact-lookup-patterns-configuration)
+  - [Why the Configuration?](#why-the-configuration)
+- [Authentication](#authentication)
+  - [Why is This Needed?](#why-is-this-needed)
+  - [How to Set Up Authentication](#how-to-set-up-authentication)
+    - [Step 1: Create an App Registration](#step-1-create-an-app-registration)
+    - [Step 2: Configure API Permissions](#step-2-configure-api-permissions)
+    - [Step 3: Configure Authentication](#step-3-configure-authentication)
+    - [Step 4: Retrieve the Client ID](#step-4-retrieve-the-client-id)
+    - [Step 5: Add Authentication Parameters to Your Script](#step-5-add-authentication-parameters-to-your-script)
+- [Usage](#usage)
+- [Registry Configuration Example](#registry-configuration-example)
+
+---
+
 ## Credits
 
 This project is based on the excellent work from the [MSEndpointMgr/IntuneWin32App](https://github.com/MSEndpointMgr/IntuneWin32App) repository.
@@ -14,6 +32,8 @@ This project is based on the excellent work from the [MSEndpointMgr/IntuneWin32A
 This repository also includes **TeamsWizard**, a tool that extends the functionality of Microsoft Teams with additional features such as hotkey dialing, call lookup, and actions triggered by incoming calls. You can learn more about TeamsWizard from their official [website](https://www.lyncwizard.com/products.html).
 
 TeamsWizard is developed by **E-Tel-IT GmbH**, based in Zunzgen, Switzerland, with over 30 years of experience in Microsoft environments. Special thanks to the team at E-Tel-IT for their contributions to improving Microsoft Teams functionality.
+
+---
 
 ## Features
 
@@ -42,6 +62,7 @@ The following registry configuration allows the application to recognize and for
 "ContactLookupPatterns"="1:\"^\\+41(7[5-9]\\d+)$\":0:\"0$1\""
 "ContactLookupPatterns"="1:\"^\\+41(?!7[5-9])(\\d+)$\":3:\"0$1\""
 ```
+---
 
 ## Authentication
 
@@ -104,6 +125,8 @@ To successfully authenticate and use this script for Intune automation, you will
 ### Step 5: Add Authentication Parameters to Your Script
 Once you have the **Client ID** and **Redirect URI**, add them as parameters to your PowerShell script to enable authentication.
 
+---
+
 ## Usage
 
 1. **Clone the Repository**:
@@ -124,3 +147,5 @@ Once you have the **Client ID** and **Redirect URI**, add them as parameters to 
 
 The following registry settings will be applied automatically after uploading the configuration script:
 ![image](https://github.com/user-attachments/assets/54c2119a-3eb8-403f-9ed4-d0433d4d5c5c)
+
+---
