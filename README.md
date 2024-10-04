@@ -20,6 +20,8 @@ This repository contains a full automated script for packaging and deploying app
 - [Usage](#usage)
 - [Registry Configuration Example](#registry-configuration-example)
 - [End User Guide](#end-user-guide)
+  - [Important Note](#important-note)
+  - [Step-by-Step Instructions](#step-by-step-instructions)
 
 ---
 
